@@ -19,22 +19,22 @@ export default function Category() {
     return (<>
         <div className="w-full h-full grid grid-cols-2 sm:grid-cols-3 gap-2 mt-1">
             {categories_data.map((category, index) => (
-                <>
-                    <Link href={category.link} key={index} className="w-full active:scale-110 aspect-[3/4] bg-white flex flex-col py-2 rounded-lg shadow-md">
-                        <div className="w-full aspect-[4/3] flex items-center justify-center">
-                            <div className="relative h-5/6 aspect-square">
-                                <Image
-                                    src={category.image}
-                                    alt="Product 1"
-                                    layout="fill"
-                                    className="w-full aspect-square object-cover"
-                                />
-                            </div>
+                <Link key={index} href={category.link} className="w-full active:scale-110 aspect-[3/4] bg-white flex flex-col py-2 rounded-lg shadow-md">
+                    <div className="w-full aspect-[4/3] flex items-center justify-center">
+                        <div className="relative h-5/6 aspect-square">
+                            <Image
+                                src={category.image}
+                                alt={category.name}
+                                width={500}
+                                height={500}
+                                className="w-full aspect-square object-cover"
+                            />
                         </div>
-                        <h3 className="text-center text-base font-semibold mt-1.5">{category.name}</h3>
-                    </Link>
-                </>
+                    </div>
+                    <h3 className="text-center text-base font-semibold mt-1.5">{category.name}</h3>
+                </Link>
             ))}
         </div>
+
     </>)
 }

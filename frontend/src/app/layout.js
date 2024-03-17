@@ -6,9 +6,9 @@ import MainBody from "./MainBody";
 const inter = Inter({ subsets: ["latin"] });
 const balthazar = Maitree({
   subsets: ["latin"],
-  weight:['500'],
-  style: ['normal'],
-})
+  weight: ["500"],
+  style: ["normal"],
+});
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -21,10 +21,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${balthazar.className} max-w-screen-maxW m-auto box-border bg-[#F7F7F7]`}>
-        <MainBody children={children}/>
+      <body
+        className={`${balthazar.className} max-w-screen-maxW m-auto box-border bg-[#F7F7F7]`}
+      >
+        <MainBody>{children}</MainBody>
         {/* <Footer/> */}
-        </body>
+      </body>
     </html>
   );
 }

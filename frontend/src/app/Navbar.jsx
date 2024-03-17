@@ -17,7 +17,6 @@ function classNames(...classes) {
 
 
 export default function Navbar() {
-
     const showFilter = () => {
         const filterbar = document.getElementById("filterbar");
         if (filterbar.classList.contains('h-0')) {
@@ -75,8 +74,8 @@ export default function Navbar() {
                     </div>
 
                     <div className="bg-white bg-opacity-80 h-5/6 aspect-square flex items-center justify-center rounded-full">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" className="w-6 h-6 text-[#FF375F]">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-6 h-6 text-[#FF375F]">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
                         </svg>
                     </div>
                 </div>
@@ -85,10 +84,10 @@ export default function Navbar() {
             {/* Search & Filter */}
             <div className="h-9 sm:h-10 md:flex-1 max-md:w-full flex items-center justify-between gap-3">
                 <div className="h-full  flex-1">
-                    <div class="relative flex items-center w-full h-full rounded-md  border shadow-md sm:shadow-lg bg-white overflow-hidden">
-                        <div class="grid place-items-center h-full w-12">
+                    <div className="relative flex items-center w-full h-full rounded-md  border shadow-md sm:shadow-lg bg-white overflow-hidden">
+                        <div className="grid place-items-center h-full w-12">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                             </svg>
                         </div>
 
@@ -101,8 +100,8 @@ export default function Navbar() {
                 </div>
                 <div className="h-full aspect-square">
                     <button className="h-full w-full flex items-center justify-center rounded-md bg-[#ff377d]" onClick={showFilter}>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" className="w-2/3 h-2/3 text-white">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-2/3 h-2/3 text-white">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z" />
                         </svg>
 
                     </button>
@@ -113,8 +112,8 @@ export default function Navbar() {
                 {/* SignUp/Signin */}
                 <div className="lg:hidden w-12 aspect-square">
                     <button className="h-full w-full flex justify-center items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 xl:h-8 xl:w-8 text-[#FF375F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 xl:h-8 xl:w-8 text-[#FF375F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </button>
                 </div>
@@ -126,8 +125,8 @@ export default function Navbar() {
                 {/* Size Grid */}
                 <div className="w-12 aspect-square">
                     <button className="h-full w-full flex justify-center items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" className="w-6 h-6 xl:w-7 xl:h-7 text-[#FF375F]">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-6 h-6 xl:w-7 xl:h-7 text-[#FF375F]">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
                         </svg>
                     </button>
                 </div>
@@ -136,7 +135,7 @@ export default function Navbar() {
                 <div className="w-12 aspect-square">
                     <button className="h-full w-full flex justify-center items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 xl:h-8 xl:w-8 text-[#FF375F]" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+                            <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
                         </svg>
                     </button>
                 </div>
@@ -144,8 +143,8 @@ export default function Navbar() {
                 {/* Card */}
                 <div className="w-12 aspect-square relative">
                     <button className="h-full w-full flex justify-center items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7 xl:w-8 xl:h-8 text-[#FF375F]">
-                            <path fill-rule="evenodd" d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 0 0 4.25 22.5h15.5a1.875 1.875 0 0 0 1.865-2.071l-1.263-12a1.875 1.875 0 0 0-1.865-1.679H16.5V6a4.5 4.5 0 1 0-9 0ZM12 3a3 3 0 0 0-3 3v.75h6V6a3 3 0 0 0-3-3Zm-3 8.25a3 3 0 1 0 6 0v-.75a.75.75 0 0 1 1.5 0v.75a4.5 4.5 0 1 1-9 0v-.75a.75.75 0 0 1 1.5 0v.75Z" clip-rule="evenodd" />
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 xl:w-8 xl:h-8 text-[#FF375F]">
+                            <path fillRule="evenodd" d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 0 0 4.25 22.5h15.5a1.875 1.875 0 0 0 1.865-2.071l-1.263-12a1.875 1.875 0 0 0-1.865-1.679H16.5V6a4.5 4.5 0 1 0-9 0ZM12 3a3 3 0 0 0-3 3v.75h6V6a3 3 0 0 0-3-3Zm-3 8.25a3 3 0 1 0 6 0v-.75a.75.75 0 0 1 1.5 0v.75a4.5 4.5 0 1 1-9 0v-.75a.75.75 0 0 1 1.5 0v.75Z" clipRule="evenodd" />
                         </svg>
 
                     </button>
@@ -161,8 +160,8 @@ export default function Navbar() {
                 {/* Category */}
                 <div className="w-96 h-full bg-[#f4d0f48f] rounded-sm mr-6 lg:mr-8">
                     <button onClick={showCategory} className="w-full h-full flex items-center pl-10 gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 xl:h-8 xl:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7" />
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 xl:h-8 xl:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h7" />
                         </svg>
                         <h2 className="text-lg">Browse Categories</h2>
                     </button>
@@ -172,8 +171,8 @@ export default function Navbar() {
                 </div>
 
                 <div className="w-auto h-full flex justify-between items-center gap-1 text-base xl:text-lg *:w-auto *:px-2 *:2md:px-4 *:h-full *:flex *:items-center *:justify-center *:rounded-sm">
-                    <div className="hover:text-[#FF375F] hover:scale-110 ">Woman's Fashion</div>
-                    <div className="hover:text-[#FF375F] hover:scale-110 ">Man's Fashion</div>
+                    <div className="hover:text-[#FF375F] hover:scale-110 ">{"Woman's Fashion"}</div>
+                    <div className="hover:text-[#FF375F] hover:scale-110 ">{"Man's Fashion"}</div>
                     <div className="hover:text-[#FF375F] hover:scale-110 ">Interior</div>
                 </div>
             </div>
@@ -187,7 +186,7 @@ export default function Navbar() {
 
         {/* Filterbar */}
         <div id="filterbar" className="bg-red-500 w-full h-0 overflow-hidden transition-all ease-linear duration-300">
-            <input type="range" max="50" min="0" value="30" />
+            <input type="range" max="50" min="0" defaultValue="30" />
         </div>
 
         {/* Mobile Bottom Menu */}
