@@ -21,6 +21,7 @@ export default function Navbar() {
     const showFilter = () => {
         const filterbar = document.getElementById("filterbar");
         if (filterbar.classList.contains('h-0')) {
+            closeCategory()
             filterbar.classList.remove('h-0');
             filterbar.classList.add('h-80');
         } else {
@@ -28,15 +29,26 @@ export default function Navbar() {
             filterbar.classList.add('h-0');
         }
     };
+    const closeFilter = () => {
+        const filterbar = document.getElementById("filterbar");
+        filterbar.classList.remove('h-80');
+        filterbar.classList.add('h-0');
+    };
     const showCategory = () => {
         const category = document.getElementById("category");
         if (category.classList.contains('h-0')) {
+            closeFilter()
             category.classList.add('h-[510px]', 'overflow-y-auto', 'overflow-x-hidden');
             category.classList.remove('h-0', 'overflow-hidden');
         } else {
             category.classList.add('h-0', 'overflow-hidden');
             category.classList.remove('h-[510px]', 'overflow-y-auto', 'overflow-x-hidden');
         }
+    };
+    const closeCategory = () => {
+        const category = document.getElementById("category");
+        category.classList.add('h-0', 'overflow-hidden');
+        category.classList.remove('h-[510px]', 'overflow-y-auto', 'overflow-x-hidden');
     };
 
     const openCart = () => {
@@ -81,7 +93,7 @@ export default function Navbar() {
                         </div>
 
                         <input
-                            className="peer h-full w-full outline-none text-sm text-gray-700 pr-2"
+                            className="peer h-full w-full outline-none text-base text-gray-700 pr-2"
                             type="search"
                             id="search"
                             placeholder="Search..." />
@@ -175,7 +187,7 @@ export default function Navbar() {
 
         {/* Filterbar */}
         <div id="filterbar" className="bg-red-500 w-full h-0 overflow-hidden transition-all ease-linear duration-300">
-           <input type="range" max="50" min="0" value="30" />
+            <input type="range" max="50" min="0" value="30" />
         </div>
 
         {/* Mobile Bottom Menu */}
