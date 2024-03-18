@@ -1,16 +1,15 @@
-import { Inter, Maitree, Roboto } from "next/font/google";
+import { Inter, Maitree, Roboto_Serif } from "next/font/google";
 import "./globals.css";
 import Footer from "./Footer";
 import MainBody from "./MainBody";
 
 const inter = Inter({ subsets: ["latin"] });
 const balthazar = Maitree({
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   weight: ["500"],
   style: ["normal"],
 });
-const roboto = Roboto({
-  // Roboto(options: { weight: "100" | "300" | "400" | "500" | "700" | "900" | ("100" | "300" | "400" | "500" | "700" | "900")[]; style?: "normal" | "italic" | ("normal" | "italic")[]; display?: Display; ... 4 more ...; subsets?: ("cyrillic" | ... 5 more ... | "vietnamese")[]; }): NextFont
+const roboto = Roboto_Serif({
   weight: ["400"],
   style: ["normal"],
   subsets: ["latin"]

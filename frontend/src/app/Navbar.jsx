@@ -22,6 +22,19 @@ function classNames(...classes) {
 }
 
 
+const product_sizes = ["S", "M", "L", "XL", "XXL", "XXXL"];
+const product_brands = ["Dora Larsen", "Bluebella", "Calvin Klein", "Intimissimi"];
+const product_colors = [
+    { name: "black", color: "#000000" },
+    { name: "white", color: "#ffffff" },
+    { name: "red", color: "#ff0000" },
+    { name: "pink", color: "#ff3db1" },
+    { name: "blue", color: "#3d4aff" },
+    { name: "purple", color: "#c83dff" },
+    { name: "gray", color: "#646464" },
+]
+
+
 
 export default function Navbar() {
     const showFilter = () => {
@@ -193,12 +206,47 @@ export default function Navbar() {
 
         {/* Filterbar */}
         <div id="filterbar" className="bg-gray-200 w-full h-0 overflow-hidden transition-all ease-linear duration-300">
-            <div className="w-full max-w-[700px] h-full bg-red-100 m-auto p-4">
-                <div className="w-full h-24">
-                    <p className="mb-9 font-bold font-sans">Price</p>
+            <div className="w-full max-w-[700px] h-full bg-red-100 m-auto px-4 md:py-2 max-md:pb-2">
+                <div className="w-full h-20 mb-2">
+                    <p className="mb-9 text-lg font-bold font-sans">Price</p>
                     <RangeInput />
                 </div>
-                <div className="h-16 w-full"></div>
+                <div className="h-12 w-full bg-red-200 flex items-center font-semibold font-sans">
+                    <p className="mr-6 sm:mr-9 flex items-center text-lg">Size</p>
+                    <ul className="flex items-center h-full gap-4 sm:gap-6">
+                        {product_sizes.map((size, index) => (
+                            <li key={index} className="h-9 min-w-9 text-base">
+                                <input id={`size-input-check-${index + 1}`} type="radio" name={size} value={size} className="peer hidden" />
+                                <label htmlFor={`size-input-check-${index + 1}`} className="flex justify-center items-center rounded-md shadow-sm h-full w-full cursor-pointer border border-[#e0e0e0] text-black bg-white peer-checked:bg-[#6fd6ffbe] px-1">{size}</label>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <div className="h-12 w-full bg-green-200 flex items-center font-semibold font-sans">
+                    <p className="mr-3 sm:mr-6 flex items-center text-lg">Color</p>
+                    <ul className="flex items-center h-full gap-4 sm:gap-6">
+                        {product_colors.map((product_color, index) => (
+                            <li key={index} className="h-7 sm:h-8 aspect-square text-base">
+                                <input id={`color-input-check-${index + 1}`} type="radio" name={product_color.name} value={product_color.name} className="peer hidden" />
+                                <label htmlFor={`color-input-check-${index + 1}`} className={`block rounded-full shadow-md h-full w-full peer-checked:ring-offset-2 peer-checked:ring-2 ring-[#FF375F]  cursor-pointer`} style={{ "backgroundColor": `${product_color.color}`, "background": `${product_color.color}` }}></label>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <div className="h-[3.5rem] w-full bg-red-200 pt-2 font-sans">
+                    <p className="mr-6 sm:mr-9 flex items-center text-lg font-semibold">Brands</p>
+                    <ul className="flex items-center gap-3 text-sm">
+                        {product_brands.map((brand, index) => (
+                            <li key={index} className="">
+                                <input id={`brand-input-check-${index + 1}`} type="radio" name={brand} value={brand} className="peer hidden" />
+                                <label htmlFor={`brand-input-check-${index + 1}`} className="peer-checked:text-[#FF375F]">
+                                    {brand}
+                                </label>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <div className="h-12 w-full bg-[#646464]"></div>
             </div>
         </div>
 
