@@ -1,4 +1,4 @@
-import { Inter, Maitree } from "next/font/google";
+import { Inter, Maitree, Roboto } from "next/font/google";
 import "./globals.css";
 import Footer from "./Footer";
 import MainBody from "./MainBody";
@@ -9,6 +9,12 @@ const balthazar = Maitree({
   weight: ["500"],
   style: ["normal"],
 });
+const roboto = Roboto({
+  // Roboto(options: { weight: "100" | "300" | "400" | "500" | "700" | "900" | ("100" | "300" | "400" | "500" | "700" | "900")[]; style?: "normal" | "italic" | ("normal" | "italic")[]; display?: Display; ... 4 more ...; subsets?: ("cyrillic" | ... 5 more ... | "vietnamese")[]; }): NextFont
+  weight: ["400"],
+  style: ["normal"],
+  subsets: ["latin"]
+})
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -22,7 +28,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${balthazar.className} max-w-screen-maxW m-auto box-border bg-[#F7F7F7]`}
+        className={`${roboto.className} max-w-screen-maxW m-auto box-border bg-[#F7F7F7]`}
       >
         <MainBody>{children}</MainBody>
         {/* <Footer/> */}

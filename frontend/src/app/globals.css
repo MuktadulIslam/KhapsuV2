@@ -57,6 +57,7 @@
   /* Demo Start */
   .slider {
     -webkit-appearance: none;
+    -moz-appearance: none;
     pointer-events: none;
     background: none;
     width: 100%;
@@ -68,13 +69,13 @@
   .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     pointer-events: auto;
     border-radius: 50%;
     background: #ffffff;
     cursor: pointer;
-    border: 3px solid #ff3860;
+    border: 4px solid #ff3860;
   }
   
   .slider::-moz-range-thumb {
@@ -86,6 +87,6 @@
     border-radius: 50%;
     background: #ffffff;
     cursor: pointer;
-    border: 3px solid #ff3860;
+    border: 4px solid #ff3860;
   }
   /* Demo End*/

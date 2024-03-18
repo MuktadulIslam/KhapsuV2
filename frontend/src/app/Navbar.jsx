@@ -1,13 +1,20 @@
 "use client"
 import Link from "next/link";
-import { Black_Ops_One } from "next/font/google";
+import { Black_Ops_One, Maitree } from "next/font/google";
 import Image from "next/image";
 import Category from "./Category";
+import RangeInput from "./RangeInput";
 
 const blackOpsOne = Black_Ops_One({
     weight: ["400"],
     style: ["normal"],
     preload: false,
+});
+
+const maitree = Maitree({
+    subsets: ["latin"],
+    weight: ["500"],
+    style: ["normal"],
 });
 
 function classNames(...classes) {
@@ -112,7 +119,7 @@ export default function Navbar() {
                 {/* SignUp/Signin */}
                 <div className="lg:hidden w-12 aspect-square">
                     <button className="h-full w-full flex justify-center items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 xl:h-8 xl:w-8 text-[#FF375F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 xl:h-8 xl:w-8 text-[#ff377d]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </button>
@@ -125,7 +132,7 @@ export default function Navbar() {
                 {/* Size Grid */}
                 <div className="w-12 aspect-square">
                     <button className="h-full w-full flex justify-center items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-6 h-6 xl:w-7 xl:h-7 text-[#FF375F]">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-6 h-6 xl:w-7 xl:h-7 text-[#ff377d]">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
                         </svg>
                     </button>
@@ -134,7 +141,7 @@ export default function Navbar() {
                 {/* Wishlist */}
                 <div className="w-12 aspect-square">
                     <button className="h-full w-full flex justify-center items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 xl:h-8 xl:w-8 text-[#FF375F]" viewBox="0 0 20 20" fill="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 xl:h-8 xl:w-8 text-[#ff377d]" viewBox="0 0 20 20" fill="currentColor">
                             <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
                         </svg>
                     </button>
@@ -143,7 +150,7 @@ export default function Navbar() {
                 {/* Card */}
                 <div className="w-12 aspect-square relative">
                     <button className="h-full w-full flex justify-center items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 xl:w-8 xl:h-8 text-[#FF375F]">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 xl:w-8 xl:h-8 text-[#ff377d]">
                             <path fillRule="evenodd" d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 0 0 4.25 22.5h15.5a1.875 1.875 0 0 0 1.865-2.071l-1.263-12a1.875 1.875 0 0 0-1.865-1.679H16.5V6a4.5 4.5 0 1 0-9 0ZM12 3a3 3 0 0 0-3 3v.75h6V6a3 3 0 0 0-3-3Zm-3 8.25a3 3 0 1 0 6 0v-.75a.75.75 0 0 1 1.5 0v.75a4.5 4.5 0 1 1-9 0v-.75a.75.75 0 0 1 1.5 0v.75Z" clipRule="evenodd" />
                         </svg>
 
@@ -178,15 +185,21 @@ export default function Navbar() {
             </div>
             <div className="max-2md:hidden  bg-black w-0.5 h-4/5"></div>
             <div className="max-2md:hidden w-auto flex items-center justify-center h-full">
-                <p className="text-xs xl:text-sm font-semibold text-[#FF375F]">Get Free Delivery on over 1000TK shopping</p>
+                <p className={`${maitree.className} text-xs xl:text-sm font-semibold text-[#FF375F]`}>Get Free Delivery on over 1000TK shopping</p>
             </div>
             <div className="max-2md:hidden w-0"></div>
         </div>
 
 
         {/* Filterbar */}
-        <div id="filterbar" className="bg-red-500 w-full h-0 overflow-hidden transition-all ease-linear duration-300">
-            <input type="range" max="50" min="0" defaultValue="30" />
+        <div id="filterbar" className="bg-gray-200 w-full h-0 overflow-hidden transition-all ease-linear duration-300">
+            <div className="w-full max-w-[700px] h-full bg-red-100 m-auto p-4">
+                <div className="w-full h-24">
+                    <p className="mb-9 font-bold font-sans">Price</p>
+                    <RangeInput />
+                </div>
+                <div className="h-16 w-full"></div>
+            </div>
         </div>
 
         {/* Mobile Bottom Menu */}
