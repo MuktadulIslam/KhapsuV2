@@ -55,19 +55,37 @@ export default function Navbar() {
     };
     const showCategory = () => {
         const category = document.getElementById("category");
+        const downarrow = document.querySelector(".chevron-double-down-category");
+
         if (category.classList.contains('h-0')) {
             closeFilter()
-            category.classList.add('h-[475px]', 'overflow-y-auto', 'overflow-x-hidden');
+            category.classList.add('h-[500px]', 'overflow-y-auto', 'overflow-x-hidden');
+            downarrow.classList.add('rotate-180');
             category.classList.remove('h-0', 'overflow-hidden');
         } else {
             category.classList.add('h-0', 'overflow-hidden');
-            category.classList.remove('h-[475px]', 'overflow-y-auto', 'overflow-x-hidden');
+            category.classList.remove('h-[500px]', 'overflow-y-auto', 'overflow-x-hidden');
+            downarrow.classList.remove('rotate-180');
         }
     };
     const closeCategory = () => {
         const category = document.getElementById("category");
+        const downarrow = document.querySelector(".chevron-double-down-category");
+
         category.classList.add('h-0', 'overflow-hidden');
         category.classList.remove('h-[475px]', 'overflow-y-auto', 'overflow-x-hidden');
+        downarrow.classList.remove('rotate-180');
+    };
+
+    const showMobileViewCategory = () => {
+        const category = document.getElementById("mobile-view-popup");
+        if (category.classList.contains('h-0')) {
+            category.classList.add('h-mobile-view-slider-popup-box');
+            category.classList.remove('h-0', 'overflow-hidden');
+        } else {
+            category.classList.add('h-0', 'overflow-hidden');
+            category.classList.remove('h-mobile-view-slider-popup-box');
+        }
     };
 
     const openCart = () => {
@@ -112,7 +130,7 @@ export default function Navbar() {
                         </div>
 
                         <input
-                            className="peer h-full w-full outline-none text-base text-gray-700 pr-2"
+                            className="peer h-full w-full outline-none text-sm text-gray-700 pr-2"
                             type="search"
                             id="search"
                             placeholder="Search..." />
@@ -179,11 +197,17 @@ export default function Navbar() {
             <div className="flex items-center w-auto h-full">
                 {/* Category */}
                 <div className="w-[410px] h-full bg-[#f4d0f48f] rounded-sm mr-6 lg:mr-8">
-                    <button onClick={showCategory} className="w-full h-full flex items-center pl-10 gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 xl:h-8 xl:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h7" />
+                    <button onClick={showCategory} className="w-full h-full flex items-center justify-between pl-10 gap-2">
+                        <div className="h-full flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 xl:h-8 xl:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h7" />
+                            </svg>
+                            <h2 className="text-lg">Browse Categories</h2>
+                        </div>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 chevron-double-down-category mr-3">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5" />
                         </svg>
-                        <h2 className="text-lg">Browse Categories</h2>
                     </button>
                     <div id="category" className="w-full h-0 overflow-hidden transition-all ease-linear duration-300">
                         <Category />
@@ -254,35 +278,52 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Bottom Menu */}
-        <div className="fixed bottom-0 md:hidden w-full h-12 bg-[#d8d5ea] grid grid-cols-4 gap-1">
+        <div className="fixed bottom-0 md:hidden w-full h-11 bg-gray-200 grid grid-cols-4 gap-1 text-[#FF375F]">
             <Link href="./" className="flex flex-col justify-center items-center w-full h-full">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
                     <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
                     <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
                 </svg>
-                <p className="text-xs">Home</p>
+                <p className="text-xs text-black">Home</p>
             </Link>
-            <button className="flex flex-col justify-center items-center w-full h-full">
+            <button className="flex flex-col justify-center items-center w-full h-full" onClick={showMobileViewCategory}>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
                     <path fillRule="evenodd" d="M3 6a3 3 0 0 1 3-3h2.25a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6Zm9.75 0a3 3 0 0 1 3-3H18a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3h-2.25a3 3 0 0 1-3-3V6ZM3 15.75a3 3 0 0 1 3-3h2.25a3 3 0 0 1 3 3V18a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-2.25Zm9.75 0a3 3 0 0 1 3-3H18a3 3 0 0 1 3 3V18a3 3 0 0 1-3 3h-2.25a3 3 0 0 1-3-3v-2.25Z" clipRule="evenodd" />
                 </svg>
-                <p className="text-xs">Categories</p>
+                <p className="text-xs text-black">Categories</p>
             </button>
             <button id="bottom-navbar-cart" className="flex flex-col justify-center items-center w-full h-full" onClick={openCart}>
                 <div className="relative">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
                         <path d="M2.25 2.25a.75.75 0 0 0 0 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 0 0-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 0 0 0-1.5H5.378A2.25 2.25 0 0 1 7.5 15h11.218a.75.75 0 0 0 .674-.421 60.358 60.358 0 0 0 2.96-7.228.75.75 0 0 0-.525-.965A60.864 60.864 0 0 0 5.68 4.509l-.232-.867A1.875 1.875 0 0 0 3.636 2.25H2.25ZM3.75 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM16.5 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" />
                     </svg>
-                    <span className="absolute top-0 right-0 h-5 w-5 bg-[#ce5288] rounded-full translate-x-4 flex items-center justify-center text-xs text-white">9</span>
+                    <span className="absolute top-0 right-0 h-5 w-5 bg-[#ff028dfe] rounded-full translate-x-4 flex items-center justify-center text-xs text-white">9</span>
                 </div>
-                <p className="text-xs">Cart</p>
+                <p className="text-xs text-black">Cart</p>
             </button>
             <Link href="./login" className="flex flex-col justify-center items-center w-full h-full">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
                     <path fillRule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clipRule="evenodd" />
                 </svg>
-                <p className="text-xs">Account</p>
+                <p className="text-xs text-black">Account</p>
             </Link>
+        </div>
+
+
+        {/* Categories for mobile/tablet view */}
+        <div id="mobile-view-popup" className="fixed bottom-11 h-0 w-screen bg-white overflow-hidden overflow-y-auto overflow-x-hidden transition-all ease-linear duration-300">
+            <div className="w-full h-full overflow-hidden">
+                <div className="h-11 w-full relative">
+                    <button onClick={showMobileViewCategory} className="absolute right-0 h-full aspect-square flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-7 h-7">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+
+                    </button>
+
+                </div>
+                <Category />
+            </div>
         </div>
     </>)
 }

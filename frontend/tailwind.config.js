@@ -22,16 +22,23 @@ module.exports = {
       'max-2xl': { 'max': '1699px' },
     },
     extend: {
+      height: {
+        'mobile-100dhv': 'calc(100vh - 7rem)',
+        'md-mobile-100dhv': 'calc(100vh - 3.5rem)',
+        'xl-mobile-100dhv': 'calc(100vh - 4rem)',
+        '2xl-mobile-100dhv': 'calc(100vh - 5rem)',
+        'mobile-view-slider-popup-box': 'calc(100vh - 44px)',
+      }
     },
     theme: {
       fontSize: {
-        xsss:['8px', '12px'],
-        xss:['10px', '14px'],
-        xs:['12px', '16px'],
-        sm: ['14px', '20px'],
-        base: ['16px', '24px'],
-        lg: ['18px', '28px'],
-        xl: ['20px', '28px'],
+        'xsss':['8px', '12px'],
+        'xss':['10px', '14px'],
+        'xs':['12px', '16px'],
+        'sm': ['14px', '20px'],
+        'base': ['16px', '24px'],
+        'lg': ['18px', '28px'],
+        'xl': ['20px', '28px'],
         '2xl': ['24px', '32px'],
         '3xl': ['30px', '36px'],
         '4xl': ['36px', '40px'],
