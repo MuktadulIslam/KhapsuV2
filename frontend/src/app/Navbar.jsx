@@ -205,37 +205,37 @@ export default function Navbar() {
 
 
         {/* Filterbar */}
-        <div id="filterbar" className="bg-gray-200 w-full h-0 overflow-hidden transition-all ease-linear duration-300">
-            <div className="w-full max-w-[700px] h-full bg-red-100 m-auto px-4 md:py-2 max-md:pb-2">
+        <div id="filterbar" className="w-full h-0 overflow-hidden transition-all ease-linear duration-300 shadow-md">
+            <div className="w-full max-w-[700px] h-full m-auto px-4 md:py-2 max-md:pb-2">
                 <div className="w-full h-20 mb-2">
                     <p className="mb-9 text-lg font-bold font-sans">Price</p>
                     <RangeInput />
                 </div>
-                <div className="h-12 w-full bg-red-200 flex items-center font-semibold font-sans">
-                    <p className="mr-6 sm:mr-9 flex items-center text-lg">Size</p>
-                    <ul className="flex items-center h-full gap-4 sm:gap-6">
+                <div className="h-12 w-full flex items-center font-semibold font-sans">
+                    <p className="mr-6 sm:mr-9 flex items-center text-base">Size</p>
+                    <ul className="flex items-center h-full gap-3 sm:gap-5 text-sm overflow-x-auto">
                         {product_sizes.map((size, index) => (
-                            <li key={index} className="h-9 min-w-9 text-base">
+                            <li key={index} className="h-7 min-w-7 sm:h-9 sm:min-w-9 ">
                                 <input id={`size-input-check-${index + 1}`} type="radio" name={size} value={size} className="peer hidden" />
-                                <label htmlFor={`size-input-check-${index + 1}`} className="flex justify-center items-center rounded-md shadow-sm h-full w-full cursor-pointer border border-[#e0e0e0] text-black bg-white peer-checked:bg-[#6fd6ffbe] px-1">{size}</label>
+                                <label htmlFor={`size-input-check-${index + 1}`} className="flex justify-center items-center rounded-md shadow-sm h-full w-full cursor-pointer border border-[#c5c4c4] text-black bg-white peer-checked:bg-[#6fd6ffbe] px-1">{size}</label>
                             </li>
                         ))}
                     </ul>
                 </div>
-                <div className="h-12 w-full bg-green-200 flex items-center font-semibold font-sans">
-                    <p className="mr-3 sm:mr-6 flex items-center text-lg">Color</p>
-                    <ul className="flex items-center h-full gap-4 sm:gap-6">
+                <div className="h-12 w-full flex items-center font-semibold font-sans">
+                    <p className="mr-3 sm:mr-6 flex items-center text-base">Color</p>
+                    <ul className="flex items-center h-full gap-3 sm:gap-5 text-sm overflow-x-auto">
                         {product_colors.map((product_color, index) => (
-                            <li key={index} className="h-7 sm:h-8 aspect-square text-base">
+                            <li key={index} className="h-6 sm:h-7 aspect-square">
                                 <input id={`color-input-check-${index + 1}`} type="radio" name={product_color.name} value={product_color.name} className="peer hidden" />
-                                <label htmlFor={`color-input-check-${index + 1}`} className={`block rounded-full shadow-md h-full w-full peer-checked:ring-offset-2 peer-checked:ring-2 ring-[#FF375F]  cursor-pointer`} style={{ "backgroundColor": `${product_color.color}`, "background": `${product_color.color}` }}></label>
+                                <label htmlFor={`color-input-check-${index + 1}`} className={`block rounded-full shadow-md h-full w-full peer-checked:ring-offset-2 peer-checked:ring-1 sm:peer-checked:ring-2 ring-[#FF375F]  cursor-pointer`} style={{ "backgroundColor": `${product_color.color}`, "background": `${product_color.color}` }}></label>
                             </li>
                         ))}
                     </ul>
                 </div>
-                <div className="h-[3.5rem] w-full bg-red-200 pt-2 font-sans">
-                    <p className="mr-6 sm:mr-9 flex items-center text-lg font-semibold">Brands</p>
-                    <ul className="flex items-center gap-3 text-sm">
+                <div className="h-12 w-full pt-2 font-sans">
+                    <p className="mr-6 sm:mr-9 flex items-center text-base font-semibold">Brands</p>
+                    <ul className="flex items-center gap-3 sm:gap-4 text-sm">
                         {product_brands.map((brand, index) => (
                             <li key={index} className="">
                                 <input id={`brand-input-check-${index + 1}`} type="radio" name={brand} value={brand} className="peer hidden" />
@@ -246,7 +246,10 @@ export default function Navbar() {
                         ))}
                     </ul>
                 </div>
-                <div className="h-12 w-full bg-[#646464]"></div>
+                <div className="h-16 w-full flex items-end gap-5 font-mono text-base pl-10 *:w-20 *:h-9">
+                    <button className="bg-white border border-blue-600 active:bg-blue-600 active:text-white rounded-md">APPLY</button>
+                    <button className="bg-blue-600 rounded-md active:bg-white active:border active:border-blue-600 active:text-black text-white">CANCEL</button>
+                </div>
             </div>
         </div>
 
