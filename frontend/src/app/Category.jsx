@@ -17,7 +17,7 @@ const categories_data = [
 
 export default function Category() {
     return (<>
-        <div className="w-full h-full grid grid-cols-2 sm:grid-cols-3 gap-3 p-1">
+        <div className="w-full h-full grid grid-cols-2 sm:grid-cols-3 gap-1.5 p-1">
             {categories_data.map((category, index) => (
                 <Link key={index} href={category.link} className="w-full max-w-32 active:scale-110 aspect-[4/5] bg-white flex flex-col py-2 rounded-lg shadow-md">
                     <div className="w-full aspect-[4/3] flex items-center justify-center">
@@ -31,7 +31,7 @@ export default function Category() {
                             />
                         </div>
                     </div>
-                    <h3 className="text-center text-sm font-semibold mt-1">{category.name}</h3>
+                    <h3 className="text-center text-xs font-semibold mt-1">{category.name}</h3>
                 </Link>
             ))}
         </div>

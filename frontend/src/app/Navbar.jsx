@@ -178,7 +178,7 @@ export default function Navbar() {
         <div className="max-md:hidden h-10 lg:h-12 w-full flex items-center 2md:justify-between shadow-md my-2">
             <div className="flex items-center w-auto h-full">
                 {/* Category */}
-                <div className="w-96 h-full bg-[#f4d0f48f] rounded-sm mr-6 lg:mr-8">
+                <div className="w-[410px] h-full bg-[#f4d0f48f] rounded-sm mr-6 lg:mr-8">
                     <button onClick={showCategory} className="w-full h-full flex items-center pl-10 gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 xl:h-8 xl:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h7" />
