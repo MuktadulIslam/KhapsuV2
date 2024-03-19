@@ -270,7 +270,7 @@ export default function Navbar() {
                         ))}
                     </ul>
                 </div>
-                <div className="h-16 w-full flex items-end gap-5 font-mono text-base pl-10 *:w-20 *:h-9">
+                <div className="h-16 w-full flex items-end gap-5 font-mono text-sm sm:text-base pl-10 *:w-20 *:h-9">
                     <button className="bg-white border border-blue-600 active:bg-blue-600 active:text-white rounded-md">APPLY</button>
                     <button className="bg-blue-600 rounded-md active:bg-white active:border active:border-blue-600 active:text-black text-white">CANCEL</button>
                 </div>

@@ -27,7 +27,7 @@ module.exports = {
         'md-mobile-100dhv': 'calc(100vh - 3.5rem)',
         'xl-mobile-100dhv': 'calc(100vh - 4rem)',
         '2xl-mobile-100dhv': 'calc(100vh - 5rem)',
-        'mobile-view-slider-popup-box': 'calc(100vh - 44px)',
+        'mobile-view-slider-popup-box': 'calc(100dvh - 44px)',
       }
     },
     theme: {

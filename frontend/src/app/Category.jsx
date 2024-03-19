@@ -19,7 +19,7 @@ export default function Category() {
     return (<>
         <div className="w-full h-full grid grid-cols-2 sm:grid-cols-3 p-1 gap-1.5 justify-items-center overflow-y-auto overflow-x-hidden">
             {categories_data.map((category, index) => (
-                <Link key={index} href={category.link} className="w-full max-w-32 active:scale-110 aspect-[4/5] bg-white flex flex-col py-2 rounded-lg shadow-md">
+                <Link key={index} href={category.link} className="w-full max-w-32 active:scale-110 aspect-[4/5] bg-white flex flex-col py-2 rounded-lg sm:shadow-md shadow-sm">
                     <div className="w-full aspect-[4/3] flex items-center justify-center">
                         <div className="relative h-5/6 aspect-square">
                             <Image
