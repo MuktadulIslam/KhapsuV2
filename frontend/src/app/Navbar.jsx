@@ -248,7 +248,7 @@ export default function Navbar() {
                 </div>
                 <div className="h-12 w-full flex items-center font-semibold font-sans">
                     <p className="mr-1 sm:mr-4 flex items-center text-base">Color</p>
-                    <ul className="flex items-center h-full gap-3 sm:gap-5 text-sm overflow-x-auto pl-2">
+                    <ul className="flex items-center h-full gap-3 sm:gap-5 text-sm overflow-x-auto px-2">
                         {product_colors.map((product_color, index) => (
                             <li key={index} className="h-6 sm:h-7 aspect-square">
                                 <input id={`color-input-check-${index + 1}`} type="radio" name={product_color.name} value={product_color.name} className="peer hidden" />
