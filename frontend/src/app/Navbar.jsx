@@ -1,6 +1,7 @@
 "use client"
 import Link from "next/link";
-import { Black_Ops_One, Maitree } from "next/font/google";
+import { Black_Ops_One, Maitree, Noto_Sans_Zanabazar_Square, Solway } from "next/font/google";
+
 import Image from "next/image";
 import Category from "./Category";
 import RangeInput from "./RangeInput";
@@ -17,9 +18,18 @@ const maitree = Maitree({
     style: ["normal"],
 });
 
-function classNames(...classes) {
-    return classes.filter(Boolean).join(" ");
-}
+const noto_Sans_Zanabazar_Square = Noto_Sans_Zanabazar_Square({
+    weight: ["400"],
+    style: ["normal"],
+    subsets: ["latin"]
+})
+
+const solway = Solway({
+    weight: ["500"],
+    style: ["normal"],
+    subsets: ["latin"]
+})
+
 
 
 const product_sizes = ["S", "M", "L", "XL", "XXL", "XXXL"];
@@ -33,6 +43,11 @@ const product_colors = [
     { name: "purple", color: "#c83dff" },
     { name: "gray", color: "#646464" },
 ]
+const cart_products = [
+    { id: "bra_121227981", sku: "pink-bra_121227981", name: "Freesia Comfy Wireless T-Shirt Bra", category: "Bra", size: "XXL", color: "Pink", price: 650, quantity: 1, img_src: "/resources/products2/product1.jpg" },
+    { id: "bra_121227231", sku: "pink-bra_121227231", name: "Valene Strapless Tulip Lace Wired Qualityful Bra", category: "Bra", size: "XL", color: "Blue", price: 600, quantity: 2, img_src: "/resources/products2/product2.png" },
+    { id: "bra_121224531", sku: "pink-bra_121224531", name: "Valene Love Birds Wired Lacy Bra Set-Rose Pink", category: "Bra-Panty Set", size: "M", color: "Off-white", price: 850, quantity: 1, img_src: "/resources/products2/product3.jpeg" },
+]
 
 
 
@@ -41,6 +56,8 @@ export default function Navbar() {
         const filterbar = document.getElementById("filterbar");
         if (filterbar.classList.contains('h-0')) {
             closeCategory()
+            closeMobileCategoryView()
+            closeCart
             filterbar.classList.remove('h-0');
             filterbar.classList.add('h-80');
         } else {
@@ -50,15 +67,19 @@ export default function Navbar() {
     };
     const closeFilter = () => {
         const filterbar = document.getElementById("filterbar");
-        filterbar.classList.remove('h-80');
-        filterbar.classList.add('h-0');
+        if (!filterbar.classList.contains('h-0')) {
+            filterbar.classList.remove('h-80');
+            filterbar.classList.add('h-0');
+        }
     };
+
     const showCategory = () => {
         const category = document.getElementById("category");
         const downarrow = document.querySelector(".chevron-double-down-category");
 
         if (category.classList.contains('h-0')) {
             closeFilter()
+            closeCart()
             category.classList.add('h-[500px]', 'overflow-y-auto', 'overflow-x-hidden');
             downarrow.classList.add('rotate-180');
             category.classList.remove('h-0', 'overflow-hidden');
@@ -72,14 +93,18 @@ export default function Navbar() {
         const category = document.getElementById("category");
         const downarrow = document.querySelector(".chevron-double-down-category");
 
-        category.classList.add('h-0', 'overflow-hidden');
-        category.classList.remove('h-[475px]', 'overflow-y-auto', 'overflow-x-hidden');
-        downarrow.classList.remove('rotate-180');
+        if (!category.classList.contains('h-0')) {
+            category.classList.add('h-0', 'overflow-hidden');
+            category.classList.remove('h-[475px]', 'overflow-y-auto', 'overflow-x-hidden');
+            downarrow.classList.remove('rotate-180');
+        }
     };
 
-    const showMobileViewCategory = () => {
-        const category = document.getElementById("mobile-view-popup");
+    const showMobileCategoryView = () => {
+        const category = document.getElementById("mobile-category-view");
         if (category.classList.contains('h-0')) {
+            closeFilter()
+            closeCart()
             category.classList.add('h-mobile-view-slider-popup-box');
             category.classList.remove('h-0', 'overflow-hidden');
         } else {
@@ -87,9 +112,32 @@ export default function Navbar() {
             category.classList.remove('h-mobile-view-slider-popup-box');
         }
     };
+    const closeMobileCategoryView = () => {
+        const category = document.getElementById("mobile-category-view");
+        if (!category.classList.contains('h-0')) {
+            category.classList.add('h-0', 'overflow-hidden');
+            category.classList.remove('h-mobile-view-slider-popup-box');
+        }
+    };
 
     const openCart = () => {
-
+        const cart = document.getElementById("cart");
+        if (cart.classList.contains('h-0')) {
+            closeFilter()
+            closeMobileCategoryView()
+            cart.classList.add('h-mobile-view-slider-popup-box', 'md:h-screen');
+            cart.classList.remove('h-0', 'overflow-hidden');
+        } else {
+            cart.classList.add('h-0', 'overflow-hidden');
+            cart.classList.remove('h-mobile-view-slider-popup-box', 'md:h-screen');
+        }
+    }
+    const closeCart = () => {
+        const cart = document.getElementById("cart");
+        if (!cart.classList.contains('h-0')) {
+            cart.classList.add('h-0', 'overflow-hidden');
+            cart.classList.remove('h-mobile-view-slider-popup-box', 'md:h-screen')
+        }
     }
 
     return (<>
@@ -180,7 +228,7 @@ export default function Navbar() {
 
                 {/* Card */}
                 <div className="w-12 aspect-square relative">
-                    <button className="h-full w-full flex justify-center items-center">
+                    <button onClick={openCart} className="h-full w-full flex justify-center items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 xl:w-8 xl:h-8 text-[#ff377d]">
                             <path fillRule="evenodd" d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 0 0 4.25 22.5h15.5a1.875 1.875 0 0 0 1.865-2.071l-1.263-12a1.875 1.875 0 0 0-1.865-1.679H16.5V6a4.5 4.5 0 1 0-9 0ZM12 3a3 3 0 0 0-3 3v.75h6V6a3 3 0 0 0-3-3Zm-3 8.25a3 3 0 1 0 6 0v-.75a.75.75 0 0 1 1.5 0v.75a4.5 4.5 0 1 1-9 0v-.75a.75.75 0 0 1 1.5 0v.75Z" clipRule="evenodd" />
                         </svg>
@@ -286,7 +334,7 @@ export default function Navbar() {
                 </svg>
                 <p className="text-xs text-black">Home</p>
             </Link>
-            <button className="flex flex-col justify-center items-center w-full h-full" onClick={showMobileViewCategory}>
+            <button className="flex flex-col justify-center items-center w-full h-full" onClick={showMobileCategoryView}>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
                     <path fillRule="evenodd" d="M3 6a3 3 0 0 1 3-3h2.25a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6Zm9.75 0a3 3 0 0 1 3-3H18a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3h-2.25a3 3 0 0 1-3-3V6ZM3 15.75a3 3 0 0 1 3-3h2.25a3 3 0 0 1 3 3V18a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-2.25Zm9.75 0a3 3 0 0 1 3-3H18a3 3 0 0 1 3 3V18a3 3 0 0 1-3 3h-2.25a3 3 0 0 1-3-3v-2.25Z" clipRule="evenodd" />
                 </svg>
@@ -311,18 +359,121 @@ export default function Navbar() {
 
 
         {/* Categories for mobile/tablet view */}
-        <div id="mobile-view-popup" className="fixed bottom-11 h-0 w-screen bg-white overflow-hidden overflow-y-auto overflow-x-hidden transition-all ease-linear duration-300">
+        <div id="mobile-category-view" className="fixed bottom-11 h-0 w-screen bg-white overflow-hidden overflow-y-auto overflow-x-hidden transition-all ease-linear duration-300">
             <div className="w-full h-full overflow-hidden">
-                <div className="h-11 w-full relative">
-                    <button onClick={showMobileViewCategory} className="absolute right-0 h-full aspect-square flex items-center justify-center">
+                <div className="text-stone-700 h-11 w-full flex items-center justify-between px-2 mb-2 shadow-md">
+                    <h2 className="h-auto w-auto text-2xl font-bold font-sans ml-4">Categories</h2>
+                    <button onClick={showMobileCategoryView} className="h-full aspect-square flex items-center justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-7 h-7">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                         </svg>
 
                     </button>
-
                 </div>
                 <Category />
+            </div>
+        </div>
+
+        {/* Cart */}
+        <div className="flex justify-end">
+            <div id="cart" className="fixed max-sm:bottom-11 bottom-0 h-0 w-screen max-w-[510px] bg-gray-50 overflow-hidden overflow-y-auto overflow-x-hidden transition-all ease-linear duration-300">
+                <div className="w-full h-full overflow-hidden flex flex-col">
+                    <div className="text-stone-700 h-11 w-full flex items-center justify-between px-2 mb-2 shadow-md">
+                        <h2 className="h-auto w-auto text-2xl font-bold font-sans ml-4">Shopping Cart</h2>
+                        <button onClick={openCart} className="h-full aspect-square flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-7 h-7">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                            </svg>
+
+                        </button>
+                    </div>
+                    <div className="flex-1 w-full flex flex-col justify-between">
+                        <div className="bg-transparent w-full flex-1 px-2 flex flex-col gap-3">
+                            {cart_products.map((product, index) => (
+                                <div key={index} className="bg-white shadow-sm h-[118px] py-2 w-full flex items-center gap-2 rounded-md">
+                                    <div className="h-full aspect-square rounded-md">
+                                        <Image
+                                            src={product.img_src}
+                                            alt="Product-1"
+                                            width={100}
+                                            height={100}
+                                            className="w-full h-full object-cover rounded-md"
+                                        />
+                                    </div>
+                                    <div className="h-full flex-1 rounded-r-md">
+                                        <div className="h-3/4 w-full flex justify-between">
+                                            <div className="h-full flex-1">
+                                                <div className="w-full h-full overflow-hidden flex flex-col justify-center">
+                                                    <p className="text-sm mb-1 font-semibold">{product.name}</p>
+                                                    <p className="text-xs"><span className="font-semibold">Category:</span>{product.category}</p>
+                                                    <div className="flex gap-7">
+                                                        <p className="text-xs"><span className="font-semibold">Size:</span>{product.size}</p>
+                                                        <p className="text-xs"><span className="font-semibold">Color:</span>{product.color}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="w-6 h-full p-1">
+                                                <button className="w-4 aspect-square rounded-full border border-black hover:border-red-600 hover:text-red-600 flex items-center justify-center ">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-3 h-3">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div className={`${noto_Sans_Zanabazar_Square.className} h-1/4 w-full flex items-center justify-between gap-1 px-1`}>
+                                            <div className="flex-1 h-auto text-sm font-semibold"><span className="font-serif inline-block translate-x-0.5">৳</span> {product.price} <span>.00</span></div>
+                                            <div className="w-28 h-full box-content bg-transparent text-indigo-600 grid grid-cols-3 border border-gray-400 rounded-md *:-translate-y-0.5 *:flex *:items-center *:justify-center">
+                                                <button className={`${solway.className} h-auto text-xl`}>-</button>
+                                                <div className="h-full font-semibold">{product.quantity}</div>
+                                                <button className={`${solway.className} h-auto text-xl`}>+</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                            {/* Extra */}
+                            <div className="bg-white shadow-sm h-[118px] py-2 w-full flex items-center gap-2 rounded-md">
+                                <div className="h-full aspect-square rounded-md">
+                                    <Image
+                                        src={"/resources/products2/product2.png"}
+                                        alt="Product-1"
+                                        width={100}
+                                        height={100}
+                                        className="w-full h-full object-cover rounded-md"
+                                    />
+                                </div>
+                                <div className="h-full flex-1 rounded-r-md">
+                                    <div className="h-3/4 w-full flex justify-between">
+                                        <div className="h-full flex-1">
+                                            <div className="w-full h-full overflow-hidden flex flex-col justify-center">
+                                                <p className="text-sm mb-1 font-semibold">Valene Strapless Tulip Lace Wired Qualityful Bra</p>
+                                                <p className="text-xs"><span className="font-semibold mr-1.5">Category:</span>Bra and Panty Set</p>
+                                            </div>
+                                        </div>
+                                        <div className="w-6 h-full p-1">
+                                            <button className="w-4 aspect-square rounded-full border border-black hover:border-red-600 hover:text-red-600 flex items-center justify-center ">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-3 h-3">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div className={`${noto_Sans_Zanabazar_Square.className} h-1/4 w-full flex items-center justify-between gap-1 px-1`}>
+                                        <div className="flex-1 h-auto text-sm font-semibold"><span className="font-serif inline-block translate-x-0.5">৳</span> 650 <span>.00</span></div>
+                                        <div className="w-28 h-full box-content bg-transparent text-indigo-600 grid grid-cols-3 border border-gray-400 rounded-md *:-translate-y-0.5 *:flex *:items-center *:justify-center">
+                                            <button className={`${solway.className} h-auto text-xl`}>-</button>
+                                            <div className="h-full font-semibold">1</div>
+                                            <button className={`${solway.className} h-auto text-xl`}>+</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="w-full h-16 sm:h-20 bg-yellow-400"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </>)

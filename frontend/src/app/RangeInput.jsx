@@ -1,5 +1,12 @@
 "use client";
 import { useEffect } from "react";
+import { Noto_Sans_Zanabazar_Square } from "next/font/google";
+
+const noto_Sans_Zanabazar_Square = Noto_Sans_Zanabazar_Square({
+    weight: ["400"],
+    style: ["normal"],
+    subsets: ["latin"]
+})
 
 export default function RangeInput() {
     const defaultMinValue = 200;
@@ -14,12 +21,6 @@ export default function RangeInput() {
         const minvalue_shower_span = document.getElementById("minvalue-shower-span");
         const maxvalue_shower_div = document.getElementById("maxvalue-shower-div");
         const maxvalue_shower_span = document.getElementById("maxvalue-shower-span");
-
-        // minvalue_shower_span.innerHTML = rangeInputs[0].value;
-        // minvalue_shower_div.style.transform = `translateX(${(rangeInputs[0].value / rangeInputs[0].max) * 100}%)`;
-
-        // progresses.style.left = (rangeInputs[0].value / rangeInputs[0].max) * 100 + "%";
-        // progresses.style.right = 100 - (rangeInputs[1].value / rangeInputs[1].max) * 100 + "%";
 
         rangeInputs.forEach((input) => {
             input.addEventListener("input", (event) => {
@@ -46,7 +47,7 @@ export default function RangeInput() {
     }, []);
 
     return (<>
-        <div className="h-auto w-full">
+        <div className={`${noto_Sans_Zanabazar_Square.className} font-sans h-auto w-full`}>
             <div className="relative">
                 <div className="absolute w-full h-1 rounded-full bg-slate-300">
                     <div className={`progress absolute h-1 rounded-full bg-[#ff3860]`} style={{
