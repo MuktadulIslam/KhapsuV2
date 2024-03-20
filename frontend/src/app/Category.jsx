@@ -21,7 +21,7 @@ export default function Category() {
             {categories_data.map((category, index) => (
                 <Link key={index} href={category.link} className="w-full max-w-32 active:scale-110 aspect-[4/5] bg-white flex flex-col py-2 rounded-lg sm:shadow-md">
                     <div className="w-full aspect-[4/3] flex items-center justify-center">
-                        <div className="relative h-5/6 aspect-square">
+                        <div className="relative h-5/6 md:max-h-[4.5rem] aspect-square">
                             <Image
                                 src={category.image}
                                 alt={category.name}
