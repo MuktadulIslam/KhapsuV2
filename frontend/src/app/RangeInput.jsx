@@ -8,9 +8,9 @@ const noto_Sans_Zanabazar_Square = Noto_Sans_Zanabazar_Square({
     subsets: ["latin"]
 })
 
-export default function RangeInput() {
-    const defaultMinValue = 200;
-    const defaultMaxValue = 2000;
+export default function RangeInput({ minRangeValue, maxRangeValue}) {
+    const defaultMinValue = minRangeValue.current  || 200;
+    const defaultMaxValue = maxRangeValue.current || 2000;
     const maxValue = 3000;
     const minValue = 0;
 
@@ -36,11 +36,15 @@ export default function RangeInput() {
                 } else {
                     progresses.style.left = (minVal / rangeInputs[0].max) * 100 + "%";
                     progresses.style.right = 100 - (maxVal / rangeInputs[1].max) * 100 + "%";
+
                     minvalue_shower_span.innerHTML = rangeInputs[0].value;
                     minvalue_shower_div.style.transform = `translateX(${(minVal / rangeInputs[0].max) * 100}%)`;
 
                     maxvalue_shower_span.innerHTML = rangeInputs[1].value;
                     maxvalue_shower_div.style.transform = `translateX(${(maxVal / rangeInputs[1].max) * 100}%)`;
+
+                    minRangeValue.current = rangeInputs[0].value
+                    maxRangeValue.current = rangeInputs[1].value
                 }
             });
         });

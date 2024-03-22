@@ -5,6 +5,7 @@ import { Black_Ops_One, Maitree, Noto_Sans_Zanabazar_Square, Solway, Noto_Sans_E
 import Image from "next/image";
 import Category from "./Category";
 import RangeInput from "./RangeInput";
+import { useRef } from "react";
 
 const blackOpsOne = Black_Ops_One({
     weight: ["400"],
@@ -33,7 +34,7 @@ const solway = Solway({
 
 
 const product_sizes = ["S", "M", "L", "XL", "XXL", "XXXL"];
-const product_sizes2 = [30, 32, 34, 36, 38, 40, 42, 44, 46, "Free Size"];
+const product_sizes2 = ["30", "32", "34", "36", "38", "40", "42", "44", "46", "Free Size"];
 const product_brands = ["Dora Larsen", "Bluebella", "Calvin Klein", "Intimissimi"];
 const product_colors = [
     { name: "black", color: "#000000" },
@@ -166,6 +167,72 @@ export default function Navbar() {
         }
     }
 
+
+    const selectedSizes = useRef([]);
+    const selectedNumberSizes = useRef([]);
+    const selectedColors = useRef([]);
+    const selectedBrands = useRef([]);
+    const maxRange = useRef(2000);
+    const minRange = useRef(200);
+
+    const handleSizeChange = (event) => {
+        const { value, checked } = event.target;
+        if (checked) {
+            selectedSizes.current = [...selectedSizes.current, value];
+        } else {
+            selectedSizes.current = selectedSizes.current.filter(size => size !== value);
+        }
+    };
+    
+    const handleNumberSizeChange = (event) => {
+        const { value, checked } = event.target;
+        if (checked) {
+            selectedNumberSizes.current = [...selectedNumberSizes.current, value];
+        } else {
+            selectedNumberSizes.current = selectedNumberSizes.current.filter(size => size !== value);
+        }
+    };
+    
+    const handleColorChange = (event) => {
+        const { value, checked } = event.target;
+        if (checked) {
+            selectedColors.current = [...selectedColors.current, value];
+        } else {
+            selectedColors.current = selectedColors.current.filter(color => color !== value);
+        }
+    };
+
+    const handleBrandChange = (event) => {
+        const { value, checked } = event.target;
+        if (checked) {
+            selectedBrands.current = [...selectedBrands.current, value];
+        } else {
+            selectedBrands.current = selectedBrands.current.filter(brand => brand !== value);
+        }
+    };
+
+    const handleApply = () => {
+        console.log("Selected Sizes:", selectedSizes.current);
+        console.log("Selected Sizes:", selectedNumberSizes.current);
+        console.log("Selected Colors:", selectedColors.current);
+        console.log("Selected Brands:", selectedBrands.current);
+        console.log("Min Range:", minRange.current);
+        console.log("Max Range:", maxRange.current);
+    };
+    
+    const handleCancel = () => {
+        // Uncheck all checkboxes
+        const filterbar = document.getElementById("filterbar");
+        const checkboxes = filterbar.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(checkbox => checkbox.checked = false);
+        
+        selectedSizes.current = [];
+        selectedNumberSizes.current = [];
+        selectedColors.current = [];
+        selectedBrands.current = [];
+    };
+
+
     return (<>
         {/* First Navbar */}
         <div className="max-md:p-2 md:pl-6 md:pr-4 h-28 sm:h-32 md:h-16 lg:h-20 w-full flex justify-between items-center md:gap-10 2md:gap-20 max-md:flex-col mb-4">
@@ -225,15 +292,15 @@ export default function Navbar() {
             <div className="max-md:hidden w-44 lg:w-80 h-full flex-none flex items-center justify-end">
                 {/* SignUp/Signin */}
                 <div className="lg:hidden w-12 aspect-square">
-                    <button className="h-full w-full flex justify-center items-center">
+                    <Link href="./login" className="h-full w-full flex justify-center items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 xl:h-8 xl:w-8 text-[#ff377d]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                    </button>
+                    </Link>
                 </div>
                 <div className="max-lg:hidden w-auto h-full flex items-center justify-between gap-2 pr-2 text-sm font-semibold">
-                    <Link href="./" className="bg-transparent border-2 border-solid border-gray-600 h-[40%] rounded-md w-16 flex items-center justify-center">Sign Up</Link>
-                    <Link href="./" className="bg-[#fa54b8b2] h-[40%] text-white rounded-md w-16 flex items-center justify-center">Sign In</Link>
+                    <Link href="./registration" className="bg-transparent border-2 border-solid border-gray-600 h-[40%] rounded-md w-16 flex items-center justify-center">Sign Up</Link>
+                    <Link href="./login" className="bg-[#fa54b8b2] h-[40%] text-white rounded-md w-16 flex items-center justify-center">Sign In</Link>
                 </div>
 
                 {/* Size Grid */}
@@ -309,14 +376,14 @@ export default function Navbar() {
             <div className="w-full max-w-[700px] h-full m-auto px-4 md:py-2 max-md:pb-2">
                 <div className="w-full h-20 mb-2">
                     <p className="mb-9 text-lg font-bold font-sans">Price</p>
-                    <RangeInput />
+                    <RangeInput maxRangeValue={maxRange} minRangeValue={minRange}/>
                 </div>
                 <div className="h-12 w-full flex items-center font-semibold font-sans">
                     <p className="mr-6 sm:mr-9 flex items-center text-base">Size</p>
                     <ul className="h-2-scrollbar flex items-center h-full gap-3 sm:gap-5 text-sm overflow-x-auto">
                         {product_sizes.map((size, index) => (
                             <li key={index} className="h-7 min-w-7 sm:h-9 sm:min-w-9 ">
-                                <input id={`size-input-check-${index + 1}`} type="checkbox" name={size} value={size} className="peer hidden" />
+                                <input id={`size-input-check-${index + 1}`} type="checkbox" name={size} value={size} className="peer hidden" onChange={handleSizeChange}/>
                                 <label htmlFor={`size-input-check-${index + 1}`} className="flex justify-center items-center rounded-md shadow-sm h-full w-full cursor-pointer border border-[#c5c4c4] text-black bg-white peer-checked:bg-[#6fd6ffbe] px-1">{size}</label>
                             </li>
                         ))}
@@ -326,8 +393,8 @@ export default function Navbar() {
                     <ul className="h-2-scrollbar ml-[3.3rem] sm:ml-16 flex items-center h-full gap-3 sm:gap-5 text-sm overflow-x-auto">
                         {product_sizes2.map((size, index) => (
                             <li key={index} className="h-auto w-auto">
-                                <input id={`size-input-check-${index + 1}`} type="checkbox" name={size} value={size} className="peer hidden" />
-                                <label htmlFor={`size-input-check-${index + 1}`} className="flex justify-center items-center rounded-md shadow-sm h-7 sm:h-9 min-w-7 sm:min-w-9 cursor-pointer border border-[#c5c4c4] text-black bg-white peer-checked:bg-[#6fd6ffbe] px-1 whitespace-nowrap">{size}</label>
+                                <input id={`number-size-input-check-${index + 1}`} type="checkbox" name={size} value={size} className="peer hidden" onChange={handleNumberSizeChange}/>
+                                <label htmlFor={`number-size-input-check-${index + 1}`} className="flex justify-center items-center rounded-md shadow-sm h-7 sm:h-9 min-w-7 sm:min-w-9 cursor-pointer border border-[#c5c4c4] text-black bg-white peer-checked:bg-[#6fd6ffbe] px-1 whitespace-nowrap">{size}</label>
                             </li>
                         ))}
                     </ul>
@@ -337,7 +404,7 @@ export default function Navbar() {
                     <ul className="h-2-scrollbar flex items-center h-full gap-3 sm:gap-5 text-sm overflow-x-auto px-2">
                         {product_colors.map((product_color, index) => (
                             <li key={index} className="h-6 sm:h-7 aspect-square">
-                                <input id={`color-input-check-${index + 1}`} type="checkbox" name={product_color.name} value={product_color.name} className="peer hidden" />
+                                <input id={`color-input-check-${index + 1}`} type="checkbox" name={product_color.name} value={product_color.name} className="peer hidden" onChange={handleColorChange}/>
                                 <label htmlFor={`color-input-check-${index + 1}`} className={`block rounded-full shadow-md h-full w-full peer-checked:ring-offset-2 peer-checked:ring-1 sm:peer-checked:ring-2 ring-[#FF375F]  cursor-pointer`} style={{ "backgroundColor": `${product_color.color}`, "background": `${product_color.color}` }}></label>
                             </li>
                         ))}
@@ -348,7 +415,7 @@ export default function Navbar() {
                     <ul className="flex items-center gap-3 sm:gap-4 text-sm">
                         {product_brands.map((brand, index) => (
                             <li key={index} className="">
-                                <input id={`brand-input-check-${index + 1}`} type="checkbox" name={brand} value={brand} className="peer hidden" />
+                                <input id={`brand-input-check-${index + 1}`} type="checkbox" name={brand} value={brand} className="peer hidden" onChange={handleBrandChange}/>
                                 <label htmlFor={`brand-input-check-${index + 1}`} className="peer-checked:text-[#FF375F]">
                                     {brand}
                                 </label>
@@ -357,8 +424,8 @@ export default function Navbar() {
                     </ul>
                 </div>
                 <div className="h-16 w-full flex items-end gap-5 font-mono text-sm sm:text-base pl-10 *:w-20 *:h-9">
-                    <button className="bg-white border border-blue-600 active:bg-blue-600 active:text-white rounded-md">APPLY</button>
-                    <button className="bg-blue-600 rounded-md active:bg-white active:border active:border-blue-600 active:text-black text-white">CANCEL</button>
+                    <button className="bg-white border border-blue-600 active:bg-blue-600 active:text-white rounded-md" onClick={handleApply}>APPLY</button>
+                    <button className="bg-blue-600 rounded-md active:bg-white active:border active:border-blue-600 active:text-black text-white" onClick={handleCancel}>CANCEL</button>
                 </div>
             </div>
         </div>
