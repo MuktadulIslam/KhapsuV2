@@ -33,6 +33,7 @@ const solway = Solway({
 
 
 const product_sizes = ["S", "M", "L", "XL", "XXL", "XXXL"];
+const product_sizes2 = [30, 32, 34, 36, 38, 40, 42, 44, 46, "Free Size"];
 const product_brands = ["Dora Larsen", "Bluebella", "Calvin Klein", "Intimissimi"];
 const product_colors = [
     { name: "black", color: "#000000" },
@@ -52,7 +53,7 @@ const cart_products = [
 
 
 export default function Navbar() {
-    const showFilter = () => {
+    const openFilter = () => {
         const filterbar = document.getElementById("filterbar");
         if (filterbar.classList.contains('h-0')) {
             closeCategory()
@@ -60,21 +61,21 @@ export default function Navbar() {
             closeCart()
             closeWishlist()
             filterbar.classList.remove('h-0');
-            filterbar.classList.add('h-80');
+            filterbar.classList.add('h-[23rem]');
         } else {
-            filterbar.classList.remove('h-80');
+            filterbar.classList.remove('h-[23rem]');
             filterbar.classList.add('h-0');
         }
     };
     const closeFilter = () => {
         const filterbar = document.getElementById("filterbar");
         if (!filterbar.classList.contains('h-0')) {
-            filterbar.classList.remove('h-80');
+            filterbar.classList.remove('h-[23rem]');
             filterbar.classList.add('h-0');
         }
     };
 
-    const showCategory = () => {
+    const openCategory = () => {
         const category = document.getElementById("category");
         const downarrow = document.querySelector(".chevron-double-down-category");
 
@@ -102,7 +103,7 @@ export default function Navbar() {
         }
     };
 
-    const showMobileCategoryView = () => {
+    const openMobileCategoryView = () => {
         const category = document.getElementById("mobile-category-view");
         if (category.classList.contains('h-0')) {
             closeFilter()
@@ -169,7 +170,7 @@ export default function Navbar() {
         {/* First Navbar */}
         <div className="max-md:p-2 md:pl-6 md:pr-4 h-28 sm:h-32 md:h-16 lg:h-20 w-full flex justify-between items-center md:gap-10 2md:gap-20 max-md:flex-col mb-4">
             <div className="w-full md:w-52 lg:w-56 xl:w-80 h-10 sm:h-[52px] md:h-full flex-none flex items-center justify-between">
-                <button onClick={showMobileCategoryView} className="md:hidden aspect-square h-full flex justify-center items-center">
+                <button onClick={openMobileCategoryView} className="md:hidden aspect-square h-full flex justify-center items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6 text-[#FF375F]">
                         <path fillRule="evenodd" d="M3 6a3 3 0 0 1 3-3h2.25a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6Zm9.75 0a3 3 0 0 1 3-3H18a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3h-2.25a3 3 0 0 1-3-3V6ZM3 15.75a3 3 0 0 1 3-3h2.25a3 3 0 0 1 3 3V18a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-2.25Zm9.75 0a3 3 0 0 1 3-3H18a3 3 0 0 1 3 3V18a3 3 0 0 1-3 3h-2.25a3 3 0 0 1-3-3v-2.25Z" clipRule="evenodd" />
                     </svg>
@@ -212,7 +213,7 @@ export default function Navbar() {
                     </div>
                 </div>
                 <div className="h-full aspect-square">
-                    <button className="h-full w-full flex items-center justify-center rounded-md bg-[#ff377d]" onClick={showFilter}>
+                    <button className="h-full w-full flex items-center justify-center rounded-md bg-[#ff377d]" onClick={openFilter}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-2/3 h-2/3 text-white">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z" />
                         </svg>
@@ -272,7 +273,7 @@ export default function Navbar() {
             <div className="flex items-center w-auto h-full">
                 {/* Category */}
                 <div className="w-[410px] h-full bg-[#f4d0f48f] rounded-sm mr-6 lg:mr-8">
-                    <button onClick={showCategory} className="w-full h-full flex items-center justify-between pl-10 gap-2">
+                    <button onClick={openCategory} className="w-full h-full flex items-center justify-between pl-10 gap-2">
                         <div className="h-full flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 xl:h-8 xl:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h7" />
@@ -312,21 +313,31 @@ export default function Navbar() {
                 </div>
                 <div className="h-12 w-full flex items-center font-semibold font-sans">
                     <p className="mr-6 sm:mr-9 flex items-center text-base">Size</p>
-                    <ul className="flex items-center h-full gap-3 sm:gap-5 text-sm overflow-x-auto">
+                    <ul className="h-2-scrollbar flex items-center h-full gap-3 sm:gap-5 text-sm overflow-x-auto">
                         {product_sizes.map((size, index) => (
                             <li key={index} className="h-7 min-w-7 sm:h-9 sm:min-w-9 ">
-                                <input id={`size-input-check-${index + 1}`} type="radio" name={size} value={size} className="peer hidden" />
+                                <input id={`size-input-check-${index + 1}`} type="checkbox" name={size} value={size} className="peer hidden" />
                                 <label htmlFor={`size-input-check-${index + 1}`} className="flex justify-center items-center rounded-md shadow-sm h-full w-full cursor-pointer border border-[#c5c4c4] text-black bg-white peer-checked:bg-[#6fd6ffbe] px-1">{size}</label>
                             </li>
                         ))}
                     </ul>
                 </div>
                 <div className="h-12 w-full flex items-center font-semibold font-sans">
+                    <ul className="h-2-scrollbar ml-[3.3rem] sm:ml-16 flex items-center h-full gap-3 sm:gap-5 text-sm overflow-x-auto">
+                        {product_sizes2.map((size, index) => (
+                            <li key={index} className="h-auto w-auto">
+                                <input id={`size-input-check-${index + 1}`} type="checkbox" name={size} value={size} className="peer hidden" />
+                                <label htmlFor={`size-input-check-${index + 1}`} className="flex justify-center items-center rounded-md shadow-sm h-7 sm:h-9 min-w-7 sm:min-w-9 cursor-pointer border border-[#c5c4c4] text-black bg-white peer-checked:bg-[#6fd6ffbe] px-1 whitespace-nowrap">{size}</label>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <div className="h-12 w-full flex items-center font-semibold font-sans">
                     <p className="mr-1 sm:mr-4 flex items-center text-base">Color</p>
-                    <ul className="flex items-center h-full gap-3 sm:gap-5 text-sm overflow-x-auto px-2">
+                    <ul className="h-2-scrollbar flex items-center h-full gap-3 sm:gap-5 text-sm overflow-x-auto px-2">
                         {product_colors.map((product_color, index) => (
                             <li key={index} className="h-6 sm:h-7 aspect-square">
-                                <input id={`color-input-check-${index + 1}`} type="radio" name={product_color.name} value={product_color.name} className="peer hidden" />
+                                <input id={`color-input-check-${index + 1}`} type="checkbox" name={product_color.name} value={product_color.name} className="peer hidden" />
                                 <label htmlFor={`color-input-check-${index + 1}`} className={`block rounded-full shadow-md h-full w-full peer-checked:ring-offset-2 peer-checked:ring-1 sm:peer-checked:ring-2 ring-[#FF375F]  cursor-pointer`} style={{ "backgroundColor": `${product_color.color}`, "background": `${product_color.color}` }}></label>
                             </li>
                         ))}
@@ -337,7 +348,7 @@ export default function Navbar() {
                     <ul className="flex items-center gap-3 sm:gap-4 text-sm">
                         {product_brands.map((brand, index) => (
                             <li key={index} className="">
-                                <input id={`brand-input-check-${index + 1}`} type="radio" name={brand} value={brand} className="peer hidden" />
+                                <input id={`brand-input-check-${index + 1}`} type="checkbox" name={brand} value={brand} className="peer hidden" />
                                 <label htmlFor={`brand-input-check-${index + 1}`} className="peer-checked:text-[#FF375F]">
                                     {brand}
                                 </label>
@@ -353,23 +364,23 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Bottom Menu */}
-        <div className="fixed bottom-0 md:hidden w-full h-11 bg-gray-200 grid grid-cols-4 gap-1 text-[#FF375F]">
+        <div className="fixed bottom-0 md:hidden w-full h-10 sm:h-11 bg-gray-200 grid grid-cols-4 gap-1 text-[#FF375F]">
             <Link href="./" className="flex flex-col justify-center items-center w-full h-full">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5 sm:h-6 sm:w-6">
                     <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
                     <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
                 </svg>
                 <p className="text-xs text-black">Home</p>
             </Link>
-            <button className="flex flex-col justify-center items-center w-full h-full" onClick={showMobileCategoryView}>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
+            <button className="flex flex-col justify-center items-center w-full h-full" onClick={openMobileCategoryView}>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5 sm:h-6 sm:w-6">
                     <path fillRule="evenodd" d="M3 6a3 3 0 0 1 3-3h2.25a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6Zm9.75 0a3 3 0 0 1 3-3H18a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3h-2.25a3 3 0 0 1-3-3V6ZM3 15.75a3 3 0 0 1 3-3h2.25a3 3 0 0 1 3 3V18a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-2.25Zm9.75 0a3 3 0 0 1 3-3H18a3 3 0 0 1 3 3V18a3 3 0 0 1-3 3h-2.25a3 3 0 0 1-3-3v-2.25Z" clipRule="evenodd" />
                 </svg>
                 <p className="text-xs text-black">Categories</p>
             </button>
             <button id="bottom-navbar-cart" className="flex flex-col justify-center items-center w-full h-full" onClick={openCart}>
                 <div className="relative">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5 sm:h-6 sm:w-6">
                         <path d="M2.25 2.25a.75.75 0 0 0 0 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 0 0-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 0 0 0-1.5H5.378A2.25 2.25 0 0 1 7.5 15h11.218a.75.75 0 0 0 .674-.421 60.358 60.358 0 0 0 2.96-7.228.75.75 0 0 0-.525-.965A60.864 60.864 0 0 0 5.68 4.509l-.232-.867A1.875 1.875 0 0 0 3.636 2.25H2.25ZM3.75 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM16.5 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" />
                     </svg>
                     <span className="absolute top-0 right-0 h-5 w-5 bg-[#ff028dfe] rounded-full translate-x-4 flex items-center justify-center text-xs text-white">9</span>
@@ -377,7 +388,7 @@ export default function Navbar() {
                 <p className="text-xs text-black">Cart</p>
             </button>
             <Link href="./login" className="flex flex-col justify-center items-center w-full h-full">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5 sm:h-6 sm:w-6">
                     <path fillRule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clipRule="evenodd" />
                 </svg>
                 <p className="text-xs text-black">Account</p>
@@ -386,11 +397,11 @@ export default function Navbar() {
 
 
         {/* Categories for mobile/tablet view */}
-        <div id="mobile-category-view" className="fixed bottom-11 h-0 w-screen bg-white overflow-hidden overflow-y-auto overflow-x-hidden transition-all ease-linear duration-300">
+        <div id="mobile-category-view" className="fixed bottom-10 sm:bottom-11 h-0 w-screen bg-white overflow-hidden overflow-y-auto overflow-x-hidden transition-all ease-linear duration-300">
             <div className="w-full h-full overflow-hidden">
                 <div className="text-stone-700 h-11 w-full flex items-center justify-between px-2 mb-2 shadow-md">
                     <h2 className="h-auto w-auto text-xl font-bold font-sans ml-4">Categories</h2>
-                    <button onClick={showMobileCategoryView} className="h-full aspect-square flex items-center justify-center">
+                    <button onClick={openMobileCategoryView} className="h-full aspect-square flex items-center justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-7 h-7">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                         </svg>
@@ -403,7 +414,7 @@ export default function Navbar() {
 
         {/* Cart */}
         <div className="flex justify-end">
-            <div id="cart" className="fixed max-sm:bottom-11 bottom-0 h-0 w-screen max-w-[450px] bg-gray-50 overflow-hidden overflow-y-auto overflow-x-hidden transition-all ease-linear duration-300">
+            <div id="cart" className="fixed max-sm:bottom-10 max-md:bottom-11 bottom-0 h-0 w-screen max-w-[400px] bg-gray-50 overflow-hidden overflow-y-auto overflow-x-hidden transition-all ease-linear duration-300">
                 <div className="w-full h-full overflow-hidden flex flex-col">
                     <div className="text-stone-700 h-11 w-full flex items-center justify-between px-2 mb-2 shadow-md">
                         <h2 className="h-auto w-auto text-xl font-bold font-sans ml-4">Shopping Cart</h2>
@@ -431,14 +442,14 @@ export default function Navbar() {
                                         <div className="h-[70%] w-full flex justify-between">
                                             <div className="h-full flex-1">
                                                 <div className="w-full h-full overflow-hidden flex flex-col justify-center">
-                                                    <p className="text-sm mb-1.5 font-semibold">{product.name}</p>
+                                                    <p className="text-sm mb-1 font-semibold">{product.name}</p>
                                                     <div className="flex gap-7">
                                                         <p className="text-xs"><span className="font-semibold mr-1.5">Size:</span>{product.size}</p>
                                                         <p className="text-xs"><span className="font-semibold mr-1.5">Color:</span>{product.color}</p>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="w-6 h-full p-1">
+                                            <div className="w-7 h-full p-1.5">
                                                 <button className="w-4 aspect-square rounded-full border border-black hover:border-red-600 hover:text-red-600 flex items-center justify-center ">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-3 h-3">
                                                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -460,20 +471,18 @@ export default function Navbar() {
                             ))}
                         </div>
                         <div className="w-full h-16 p-2 flex flex-col font-sans font-semibold">
-                            <div className="w-full h-0.5 bg-indigo-400 mb-2"></div>
+                            <div className="w-full h-0.5 bg-[#007AFF] mb-2"></div>
                             <div className="w-full flex-1 flex items-center justify-between gap-1">
                                 <div className="h-full w-20 flex justify-between items-center">
-                                    <p className="text-lg">Subtotal</p>
-                                    <p className="text-xl">:</p>
+                                    <p className="text-base">Subtotal</p>
+                                    <p className="text-lg">:</p>
                                 </div>
-                                <div className={`${noto_Sans_Zanabazar_Square.className} h-full flex-1 flex items-center text-lg`}><span className="font-serif text-base">৳</span> 1250 <span>.00</span></div>
-                                <div className="h-full flex-1 ">
+                                <div className={`${noto_Sans_Zanabazar_Square.className} h-full flex-1 flex items-center text-base`}><span className="font-serif text-sm">৳</span> 1250 <span>.00</span></div>
+                                <div className="h-full flex-1 text-sm">
                                     <button className="bg-[#007AFF] pl-1.5 pr-2.5 w-auto rounded-md h-full flex justify-center items-center text-white">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                         </svg>
-
-
                                         <p>Check out</p>
                                     </button>
                                 </div>
@@ -486,7 +495,7 @@ export default function Navbar() {
 
         {/* Wishlist */}
         <div className="flex justify-end">
-            <div id="wishlist" className="fixed max-sm:bottom-11 bottom-0 h-0 w-screen max-w-[450px] bg-gray-50 overflow-hidden overflow-y-auto overflow-x-hidden transition-all ease-linear duration-300">
+            <div id="wishlist" className="fixed max-sm:bottom-10 max-md:bottom-11 bottom-0 h-0 w-screen max-w-[400px] bg-gray-50 overflow-hidden overflow-y-auto overflow-x-hidden transition-all ease-linear duration-300">
                 <div className="w-full h-full overflow-hidden flex flex-col">
                     <div className="text-stone-700 h-11 w-full flex items-center justify-between px-2 mb-2 shadow-md">
                         <h2 className="h-auto w-auto text-xl font-bold font-sans ml-4">Wishlist</h2>
@@ -517,7 +526,7 @@ export default function Navbar() {
                                                 <p className="text-xs"><span className="font-semibold">Category:</span>{product.category}</p>
                                             </div>
                                         </div>
-                                        <div className="w-6 h-full p-1">
+                                        <div className="w-7 h-full p-1.5">
                                             <button className="w-4 aspect-square rounded-full border border-black hover:border-red-600 hover:text-red-600 flex items-center justify-center ">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-3 h-3">
                                                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -528,7 +537,7 @@ export default function Navbar() {
                                     <div className={`h-[30%] w-full flex items-center justify-between gap-1`}>
                                         <div className={`${noto_Sans_Zanabazar_Square.className} flex-1 h-auto text-sm font-bold`}><span className="font-serif inline-block translate-x-0.5">৳</span> {product.price} <span>.00</span></div>
                                         <div className="w-28 h-full rounded-md">
-                                            <button className={`w-full h-full  bg-[#FF375F] text-white active:bg-white active:border-2 active:border-[#FF375F] active:text-[#FF375F] flex items-center justify-center rounded-md font-sans`}>Add to Cart</button>
+                                            <button className={`w-full h-full text-sm  bg-[#FF375F] text-white active:bg-white active:border-2 active:border-[#FF375F] active:text-[#FF375F] flex items-center justify-center rounded-md font-sans`}>Add to Cart</button>
                                         </div>
 
                                     </div>

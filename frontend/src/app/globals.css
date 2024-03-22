@@ -7,6 +7,10 @@
   width: 5px;
 }
 
+.h-2-scrollbar::-webkit-scrollbar {
+  height: 2px;
+}
+
 ::-webkit-scrollbar-track {
   background: none;
 }

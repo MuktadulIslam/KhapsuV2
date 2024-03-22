@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${roboto.className} max-w-screen-maxW m-auto box-border bg-[#F7F7F7]`}
+        className={`${roboto.className} font-sans max-w-screen-maxW m-auto box-border bg-[#F7F7F7]`}
       >
         <MainBody>{children}</MainBody>
         {/* <Footer/> */}
