@@ -2,6 +2,7 @@ import { Inter, Maitree, Roboto_Serif } from "next/font/google";
 import "./globals.css";
 import Footer from "./Footer";
 import MainBody from "./MainBody";
+import ProductGrid from "@/components/products/ProductGrid";
 
 const inter = Inter({ subsets: ["latin"] });
 const balthazar = Maitree({
@@ -30,6 +31,7 @@ export default function RootLayout({ children }) {
         className={`${roboto.className} font-sans max-w-screen-maxW m-auto box-border bg-[#F7F7F7]`}
       >
         <MainBody>{children}</MainBody>
+        <ProductGrid/>
         {/* <Footer/> */}
       </body>
     </html>

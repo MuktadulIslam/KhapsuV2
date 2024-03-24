@@ -183,7 +183,7 @@ export default function Navbar() {
             selectedSizes.current = selectedSizes.current.filter(size => size !== value);
         }
     };
-    
+
     const handleNumberSizeChange = (event) => {
         const { value, checked } = event.target;
         if (checked) {
@@ -192,7 +192,7 @@ export default function Navbar() {
             selectedNumberSizes.current = selectedNumberSizes.current.filter(size => size !== value);
         }
     };
-    
+
     const handleColorChange = (event) => {
         const { value, checked } = event.target;
         if (checked) {
@@ -219,13 +219,13 @@ export default function Navbar() {
         console.log("Min Range:", minRange.current);
         console.log("Max Range:", maxRange.current);
     };
-    
+
     const handleCancel = () => {
         // Uncheck all checkboxes
         const filterbar = document.getElementById("filterbar");
         const checkboxes = filterbar.querySelectorAll('input[type="checkbox"]');
         checkboxes.forEach(checkbox => checkbox.checked = false);
-        
+
         selectedSizes.current = [];
         selectedNumberSizes.current = [];
         selectedColors.current = [];
@@ -383,7 +383,7 @@ export default function Navbar() {
                     <ul className="h-2-scrollbar flex items-center h-full gap-3 sm:gap-5 text-sm overflow-x-auto">
                         {product_sizes.map((size, index) => (
                             <li key={index} className="h-7 min-w-7 sm:h-9 sm:min-w-9 ">
-                                <input id={`size-input-check-${index + 1}`} type="checkbox" name={size} value={size} className="peer hidden" onChange={handleSizeChange}/>
+                                <input id={`size-input-check-${index + 1}`} type="checkbox" name={size} value={size} className="peer hidden" onChange={handleSizeChange} />
                                 <label htmlFor={`size-input-check-${index + 1}`} className="flex justify-center items-center rounded-md shadow-sm h-full w-full cursor-pointer border border-[#c5c4c4] text-black bg-white peer-checked:bg-[#6fd6ffbe] px-1">{size}</label>
                             </li>
                         ))}
@@ -393,7 +393,7 @@ export default function Navbar() {
                     <ul className="h-2-scrollbar ml-[3.3rem] sm:ml-16 flex items-center h-full gap-3 sm:gap-5 text-sm overflow-x-auto">
                         {product_sizes2.map((size, index) => (
                             <li key={index} className="h-auto w-auto">
-                                <input id={`number-size-input-check-${index + 1}`} type="checkbox" name={size} value={size} className="peer hidden" onChange={handleNumberSizeChange}/>
+                                <input id={`number-size-input-check-${index + 1}`} type="checkbox" name={size} value={size} className="peer hidden" onChange={handleNumberSizeChange} />
                                 <label htmlFor={`number-size-input-check-${index + 1}`} className="flex justify-center items-center rounded-md shadow-sm h-7 sm:h-9 min-w-7 sm:min-w-9 cursor-pointer border border-[#c5c4c4] text-black bg-white peer-checked:bg-[#6fd6ffbe] px-1 whitespace-nowrap">{size}</label>
                             </li>
                         ))}
@@ -404,7 +404,7 @@ export default function Navbar() {
                     <ul className="h-2-scrollbar flex items-center h-full gap-3 sm:gap-5 text-sm overflow-x-auto px-2">
                         {product_colors.map((product_color, index) => (
                             <li key={index} className="h-6 sm:h-7 aspect-square">
-                                <input id={`color-input-check-${index + 1}`} type="checkbox" name={product_color.name} value={product_color.name} className="peer hidden" onChange={handleColorChange}/>
+                                <input id={`color-input-check-${index + 1}`} type="checkbox" name={product_color.name} value={product_color.name} className="peer hidden" onChange={handleColorChange} />
                                 <label htmlFor={`color-input-check-${index + 1}`} className={`block rounded-full shadow-md h-full w-full peer-checked:ring-offset-2 peer-checked:ring-1 sm:peer-checked:ring-2 ring-[#FF375F]  cursor-pointer`} style={{ "backgroundColor": `${product_color.color}`, "background": `${product_color.color}` }}></label>
                             </li>
                         ))}
@@ -415,7 +415,7 @@ export default function Navbar() {
                     <ul className="flex items-center gap-3 sm:gap-4 text-sm">
                         {product_brands.map((brand, index) => (
                             <li key={index} className="">
-                                <input id={`brand-input-check-${index + 1}`} type="checkbox" name={brand} value={brand} className="peer hidden" onChange={handleBrandChange}/>
+                                <input id={`brand-input-check-${index + 1}`} type="checkbox" name={brand} value={brand} className="peer hidden" onChange={handleBrandChange} />
                                 <label htmlFor={`brand-input-check-${index + 1}`} className="peer-checked:text-[#FF375F]">
                                     {brand}
                                 </label>

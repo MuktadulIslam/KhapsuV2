@@ -8,7 +8,7 @@ const noto_Sans_Zanabazar_Square = Noto_Sans_Zanabazar_Square({
     subsets: ["latin"]
 })
 
-export default function RangeInput({ minRangeValue, maxRangeValue}) {
+export default function RangeInput({ maxRangeValue, minRangeValue}) {
     const defaultMinValue = minRangeValue.current  || 200;
     const defaultMaxValue = maxRangeValue.current || 2000;
     const maxValue = 3000;

@@ -20,6 +20,12 @@ module.exports = {
       'max-lg': { 'max': '1199px' },
       'max-xl': { 'max': '1399px' },
       'max-2xl': { 'max': '1699px' },
+      'zero-sm': {'min': '0px', 'max': '559px'},
+      'sm-md': {'min': '560px', 'max': '799px'},
+      'md-2md': {'min': '800px', 'max': '999px'},
+      '2md-lg': {'min': '1000px', 'max': '1199px'},
+      'lg-xl': {'min': '1200px', 'max': '1399px'},
+      'xl-2xl': {'min': '1400px', 'max': '1700px'},
     },
     extend: {
       height: {
