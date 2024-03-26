@@ -1,0 +1,50 @@
+{
+    "products": [
+        {
+            "id": "FS001",
+            "SKU": "PDDR-32",
+            "price": 1000,
+            "discount_price": 800,
+            "name": "Summer Special Play Quality Half Sleeve Jersey by NOGOR",
+            "category": "Bra",
+            "reviewCount": 117,
+            "stock_size": 30,
+            "sizes": [
+              { "name": "S", "stock_size": 2 },
+              { "name": "M", "stock_size": 40 },
+              { "name": "L", "stock_size": 0 },
+              { "name": "XL", "stock_size": 15 },
+              { "name": "XXL", "stock_size": 25 }
+            ],
+            "colors": [
+                { "name": "black", "img_src": "/resources/products/1.jpg", "stock_size": 25},
+                { "name": "white", "img_src": "/resources/products/21.jpg", "stock_size": 25 },
+                { "name": "blue", "img_src": "/resources/products/22.jpg", "stock_size": 0 },
+                { "name": "red", "img_src": "/resources/products/23.jpg", "stock_size": 25 },
+                { "name": "pink", "img_src": "/resources/products/24.jpg", "stock_size": 25
+                }
+              ],
+            "tag_names": [
+              "Casual",
+              "Men's Fashion",
+              "hoodie"
+            ],
+            "rating": 3.9,
+            "total_sell": 500,
+            "total_sell_threshold": 1,
+            "image_url": "/resources/products/1.jpg",
+            "more_image_url": [
+              "/resources/fullsleeve5.jpg",
+              "/resources/fullsleeve6.jpg",
+              "/resources/fullsleeve7.jpg"
+            ],
+            "point_description": [
+              "The perfect piece, made from our customer’s voice.",
+              "Relaxed Fit",
+              "Comfortable full sleeve Unisex T-shirt.",
+              "Fabric: Stretch China Polyester",
+              "GSM: 230-290"
+            ]
+          }
+    ]
+}

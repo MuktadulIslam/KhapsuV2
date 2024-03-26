@@ -99,7 +99,7 @@ export default function Navbar() {
         if (!category.classList.contains('h-0')) {
             const downarrow = document.querySelector(".chevron-double-down-category");
             category.classList.add('h-0', 'overflow-hidden');
-            category.classList.remove('h-[475px]', 'overflow-y-auto', 'overflow-x-hidden');
+            category.classList.remove('h-[500px]', 'overflow-y-auto', 'overflow-x-hidden');
             downarrow.classList.remove('rotate-180');
         }
     };
@@ -129,6 +129,7 @@ export default function Navbar() {
         const cart = document.getElementById("cart");
         if (cart.classList.contains('h-0')) {
             closeFilter()
+            closeCategory()
             closeMobileCategoryView()
             closeWishlist()
             cart.classList.add('h-mobile-view-slider-popup-box', 'md:h-screen');
@@ -151,6 +152,7 @@ export default function Navbar() {
         if (wishlist.classList.contains('h-0')) {
             closeCart()
             closeFilter()
+            closeCategory()
             closeMobileCategoryView()
             wishlist.classList.add('h-mobile-view-slider-popup-box', 'md:h-screen');
             wishlist.classList.remove('h-0', 'overflow-hidden');
@@ -339,7 +341,7 @@ export default function Navbar() {
         <div className="max-md:hidden h-10 lg:h-12 w-full flex items-center 2md:justify-between shadow-md my-2">
             <div className="flex items-center w-auto h-full">
                 {/* Category */}
-                <div className="w-[410px] h-full bg-[#f4d0f48f] rounded-sm mr-6 lg:mr-8">
+                <div className="w-[410px] h-full bg-[#f4d0f48f] rounded-sm mr-6 lg:mr-8 relative">
                     <button onClick={openCategory} className="w-full h-full flex items-center justify-between pl-10 gap-2">
                         <div className="h-full flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 xl:h-8 xl:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -352,7 +354,7 @@ export default function Navbar() {
                             <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5" />
                         </svg>
                     </button>
-                    <div id="category" className="w-full h-0 overflow-hidden transition-all ease-linear duration-300">
+                    <div id="category" className="w-full h-0 overflow-hidden transition-all ease-linear duration-300 absolute">
                         <Category />
                     </div>
                 </div>
@@ -372,7 +374,7 @@ export default function Navbar() {
 
 
         {/* Filterbar */}
-        <div id="filterbar" className="w-full h-0 overflow-hidden transition-all ease-linear duration-300 shadow-md">
+        <div id="filterbar" className="bg-white z-50 w-full h-0 overflow-hidden transition-all ease-linear duration-300 shadow-md">
             <div className="w-full max-w-[700px] h-full m-auto px-4 md:py-2 max-md:pb-2">
                 <div className="w-full h-20 mb-2">
                     <p className="mb-9 text-lg font-bold font-sans">Price</p>
